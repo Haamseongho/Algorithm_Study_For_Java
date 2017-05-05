@@ -1,0 +1,22 @@
+package algorithm_week1;
+
+import java.util.Scanner;
+
+public class check_2007 {
+	static Scanner sc;
+
+	public static void main(String[] args) {
+		sc = new Scanner(System.in);
+		int month = sc.nextInt();
+		int day = sc.nextInt();
+
+		month = sc.nextInt();
+		day = sc.nextInt();
+		
+		checkDate(month,day);
+	}
+
+	private static void checkDate(int month, int day) {
+		if(month==1 || month==3 || month==5 ||month)
+	}
+}
