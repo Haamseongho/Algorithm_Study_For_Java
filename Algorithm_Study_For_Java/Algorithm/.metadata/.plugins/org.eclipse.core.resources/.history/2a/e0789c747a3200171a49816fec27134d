@@ -1,0 +1,44 @@
+package stack_algorithm;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class bracket {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Stack stack = new Stack();
+		System.out.println("괄호 실습 횟수 : ");
+		int size = sc.nextInt();
+		int size2 = size;
+		String bracket;
+		int right_bracket = 0;
+		int left_bracket = 0;
+
+		while (size > 0) {
+
+			bracket = sc.next();
+			stack.push(bracket);
+
+			size--;
+		}
+		System.out.println("올바른 지 확인 하기(1): ");
+		while (size2 > 0) {
+			if (sc.nextInt() == 1) {
+				if (stack.get(size2 - 1).equals("(")) {
+					left_bracket += 1;
+				} else if (stack.get(size2 - 1).equals(")")) {
+					right_bracket += 1;
+				} else {
+					// nothing to do .
+				}
+			}
+			size2--;
+			if (left_bracket == right_bracket) {
+				System.out.println("YES");
+			} else {
+				System.out.println("NO");
+			}
+		}
+	}
+}

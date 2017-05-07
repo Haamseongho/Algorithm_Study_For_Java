@@ -1,0 +1,33 @@
+package stack_algorithm;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class bracket {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Stack stack = new Stack();
+		System.out.println("°ýÈ£ ½Ç½À È½¼ö : ");
+		int size = sc.nextInt();
+
+		while (size > 0) {
+			System.out.print("°ýÈ£ ÀÔ·Â:");
+			String bracket = sc.next();
+			size--;
+			if (bracket.equals("(")) {
+				stack.push(bracket);
+			} else if (bracket.equals(")")) {
+				if (!stack.isEmpty()) {
+					stack.pop();
+					System.out.println("YES");
+				} else {
+					System.out.println("NO");
+					System.out.println("³²Àº °Í:" + stack.peek());
+				}
+
+			}
+
+		}
+	}
+}

@@ -1,0 +1,32 @@
+package stack_algorithm;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class iron_stick {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Stack stack = new Stack();
+		System.out.println("°ýÈ£ ½Ç½À È½¼ö : ");
+		int size = sc.nextInt();
+		int cnt = 0;
+		int sum = 0;
+		while (size > 0) {
+			System.out.print("°ýÈ£ ÀÔ·Â:");
+			String bracket = sc.next();
+			size--;
+			if (bracket.equals("(")) {
+				cnt++;
+				stack.push(cnt);
+			} else if (bracket.equals(")")) {
+				if (stack.peek().equals(cnt-1)) {
+					sum += 3;
+				} else {
+					sum += 1;
+				}
+			}
+		}
+		System.out.println("ÃÑÇÕ : " + sum);
+	}
+}
