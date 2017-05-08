@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class toFindAlphabet {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String str = sc.next();
+		int sArray[] = new int[26];
+		int pos[] = new int[26];
+
+		for (int i = 0; i < str.length(); i++) {
+			sArray[str.charAt(i) - 'a']++;
+		}
+		for (int j = 0; j < sArray.length; j++) {
+			pos[j] = sArray[j];
+		}
+		for (int k = 0; k < sArray.length; k++) {
+			if (pos[k] == 0) {
+				System.out.print(-1 + " ");
+			} else {
+				System.out.print(pos[k] + " ");
+			}
+		}
+	}
+
+}
