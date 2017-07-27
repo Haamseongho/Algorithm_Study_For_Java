@@ -1,0 +1,10 @@
+
+public class Solution {
+
+	public int solution(int N){
+		if(N == 1 || N == 0)
+			return N;
+		else
+			return N % 2 ;
+	}
+}

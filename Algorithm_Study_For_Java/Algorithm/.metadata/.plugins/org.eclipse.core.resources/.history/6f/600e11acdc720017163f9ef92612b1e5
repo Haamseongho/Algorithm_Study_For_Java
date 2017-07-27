@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class BinaryGap2 {
+	private static ArrayList<Integer> arrList;
+	private static int i;
+
+	BinaryGap2() {
+		arrList = new ArrayList<>();
+		i = 0;
+	}
+
+	static int solution(int N) {
+		if (N / 2 == 0) {
+			arrList.add(i, 0);
+		} else {
+			arrList.add(i, N % 2);
+			i++;
+		}
+		return arrList.get(i);
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.print(solution(sc.nextInt()));
+	}
+
+}
