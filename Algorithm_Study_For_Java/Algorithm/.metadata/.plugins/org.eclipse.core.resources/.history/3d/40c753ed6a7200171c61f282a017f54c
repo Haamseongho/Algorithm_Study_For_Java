@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class BinaryGap {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int N = scanner.nextInt();
+		int i = 0, rest = 0;
+		int mok = N;
+		
+		Solution s = new Solution();
+		mok = s.solution(N);
+		rest = N - 2*mok;
+		
+		System.out.print(mok + " / " + rest);
+	}
+}

@@ -1,0 +1,44 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class BinaryGap {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+
+		Solution s = new Solution();
+		s.solution(n);
+
+		for (int i = 0; i < s.getStack(); i++) {
+			if (s.setStack().isEmpty()) {
+				System.out.print("스택에 쌓인 내용이 없습니다.");
+				break;
+			} else {
+				System.out.print(s.setStack().pop());
+			}
+		}
+	}
+}
+
+class Solution {
+	Stack<Integer> stack = new Stack<Integer>();
+
+	public int solution(int N) {
+		if (solution(N / 2) == 0) {
+			stack.push(0);
+			return 0;
+		} else {
+			stack.push(N % 2);
+			return solution(N / 2);
+		}
+	}
+
+	public int getStack() {
+		return stack.size();
+	}
+
+	public Stack setStack() {
+		return stack;
+	}
+}

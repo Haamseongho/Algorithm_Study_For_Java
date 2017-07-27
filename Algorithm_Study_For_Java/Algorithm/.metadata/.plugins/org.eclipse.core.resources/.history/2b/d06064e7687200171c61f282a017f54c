@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class BinaryGap {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int N = scanner.nextInt();
+		int i = 0, rest = 0;
+		int mok = N;
+		ArrayList<Integer> arrList = new ArrayList<>();
+
+		do {
+			rest = mok % 2;
+			mok = N / 2;
+			i++;
+			arrList.add(i, rest);
+			System.out.print(arrList.size());
+		} while (mok != 0 || mok != 1);
+		System.out.print(arrList.size());
+		for(int j=0;j<arrList.size();j++){
+			System.out.print(arrList.get(j));
+		}
+	}
+}

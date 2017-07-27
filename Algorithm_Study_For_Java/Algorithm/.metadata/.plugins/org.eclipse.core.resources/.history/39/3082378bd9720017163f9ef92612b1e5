@@ -1,0 +1,23 @@
+import java.util.Stack;
+
+class Solution {
+	Stack<Integer> stack = new Stack<Integer>();
+
+	public int solution(int N) {
+		if (solution(N / 2) == 0) {
+			stack.push(0);
+			return 0;
+		} else {
+			stack.push(N % 2);
+			return solution(N / 2);
+		}
+	}
+
+	public int getStack() {
+		return stack.size();
+	}
+
+	public Stack setStack() {
+		return stack;
+	}
+}

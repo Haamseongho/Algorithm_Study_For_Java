@@ -20,5 +20,4 @@ public class cntAlphabet {
 			System.out.print(sArray[j]+" ");
 		}
 	}
-
 }
