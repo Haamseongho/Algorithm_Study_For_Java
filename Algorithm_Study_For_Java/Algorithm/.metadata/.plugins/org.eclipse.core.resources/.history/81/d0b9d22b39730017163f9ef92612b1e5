@@ -1,0 +1,30 @@
+package arrays;
+
+import java.lang.reflect.Array;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class OddOccurrencesInArray {
+
+	public static int solution(int[] A){
+		HashSet<Integer> hashMap = new HashSet<>();
+		Iterator<Integer> iterator = hashMap.iterator();
+		int idx=0;
+		do{
+			if(hashMap.contains(A[idx])){
+				hashMap.removeAll(hashMap);
+			}else{
+				hashMap.add(A[idx]);
+			}
+			idx++;
+		}while(iterator.hasNext());
+		
+		return iterator.next();
+	}
+
+	public static void main(String[] args) {
+		int[] arr = {};
+		System.out.print(solution(arr));
+	}
+}
