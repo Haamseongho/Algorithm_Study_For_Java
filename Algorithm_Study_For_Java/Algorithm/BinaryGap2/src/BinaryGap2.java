@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BinaryGap2 { 
-	// codilityì—ì„œ classëª… Solutionìœ¼ë¡œ ë°”ê¿”ì„œ ëŒë ¤ì£¼ì„¸ìš”! ê·¸ë˜ì•¼ ëŒì•„ê°‘ë‹ˆë‹¤..ã… 
+	// codility¿¡¼­ class¸í SolutionÀ¸·Î ¹Ù²ã¼­ µ¹·ÁÁÖ¼¼¿ä! ±×·¡¾ß µ¹¾Æ°©´Ï´Ù..¤Ğ
 
 	static int solution(int N) {
 		ArrayList<Integer> arrList = new ArrayList<>();

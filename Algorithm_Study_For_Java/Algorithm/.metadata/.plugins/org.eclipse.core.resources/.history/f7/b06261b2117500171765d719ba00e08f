@@ -1,0 +1,27 @@
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
+
+public class PerMissingElem {
+	static int solution(int[] A) {
+		HashMap<Integer, Integer> hashMap = new HashMap<>();
+		Set<Integer> hashSet = new HashSet<>();
+		
+		for(int i=1;i<A.length+1;i++){
+			if(hashSet.contains(A[i]))
+				hashSet.add(i);
+			else
+				hashSet.remove(i);
+		}
+		
+		return hashSet.iterator().next();
+	}
+
+	public static void main(String[] args) {
+		int arr[] = { 0, 2, 3, 1, 5 };
+		//solution(arr);
+		System.out.print(solution(arr));
+	}
+
+}

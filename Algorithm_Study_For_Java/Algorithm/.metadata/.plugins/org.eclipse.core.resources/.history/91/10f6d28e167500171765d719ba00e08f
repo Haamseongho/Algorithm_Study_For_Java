@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class FrogJmp {
+
+	static int solution(int X,int Y,int D){
+		int cnt=0;
+		// X가 출발 지점 D는 X에서 최대치로 갈 수 있는 거리 Y 이상 가게 되면 멈춘다.
+		// X+D+D+ ... >= Y (Y를 넘도록 뛰게 되면 개구리는 멈춘다.)
+		/*
+		 * 1, 개구리 처음 위치를 X로 잡고 +D만큼해서 Y이상이 될 경우 반복문 빠져나오게 하면서 카운트 늘리기.
+		 */
+		for(int i=X;i>=Y; i=i+D){
+			cnt++;
+		}
+		return cnt;
+	}
+
+	public static void main(String[] args) {
+		Frog frog = new Frog();
+		System.out.print(solution(10, 85, 30));
+	}
+
+}
+
+class Frog {
+	int x;
+	int y;
+	int d;
+
+	int getX() {
+		return x;
+	}
+
+	void setX(int x) {
+		this.x = x;
+	}
+
+	int getY() {
+		return y;
+	}
+
+	void setY(int y) {
+		this.y = y;
+	}
+
+	int getD() {
+		return d;
+	}
+
+	void setD(int d) {
+		this.d = d;
+	}
+
+}
