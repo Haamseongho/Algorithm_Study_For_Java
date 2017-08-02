@@ -1,0 +1,27 @@
+import java.util.ArrayList;
+
+public class TapeEquilibrium {
+
+	static int solution(int[] A) {
+		int sum1 = 0;
+		int sum2 = 0;
+		ArrayList<Integer> arrList2 = new ArrayList<>();
+		for(int i=1;i<A.length;i++){
+			sum2 += A[i]; // 우선 죄다 더해!
+			arrList2.add((i-1),sum2); 
+			/*
+			 * 0번쨰. 1
+			 * 1번째. 3
+			 * 2번쨰. 7
+			 * 3번째 . 10
+			 */
+			System.out.print(arrList2.get(i));
+		}
+	}
+
+	public static void main(String[] args) {
+		int arr[] = { 3, 1, 2, 4, 3 };
+		System.out.print(solution(arr));
+	}
+
+}

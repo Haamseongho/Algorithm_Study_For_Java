@@ -1,0 +1,23 @@
+import java.util.Arrays;
+
+public class PermCheck {
+	static int solution(int[] A){
+		Arrays.sort(A);
+		int chg_arr[] = new int[A.length+1];
+		for(int i=0;i<A.length;i++){
+			if(A[i]>0){
+				chg_arr[i] = A[i];
+			}
+		}
+		for(int i=0;i<A.length;i++){
+			System.out.println(chg_arr[i]);
+		}
+		return 0;
+	}
+
+	public static void main(String[] args) {
+		int arr[] = {4,1,3,2};
+		System.out.print(solution(arr));
+	}
+
+}

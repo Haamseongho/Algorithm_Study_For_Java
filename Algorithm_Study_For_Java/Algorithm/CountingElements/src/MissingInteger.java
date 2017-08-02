@@ -1,0 +1,46 @@
+import java.util.HashSet;
+
+public class MissingInteger {
+
+	static int solution(int[] A) {
+		HashSet<Integer> hashSet = new HashSet<>();
+		long max = A[0];
+		int result = 0;
+		/*
+		 * hashSet으로 하는 이유 : 배열로 하게 되면 A[i]가 (-)부호를 갖는 수가 나올 경우 새로운 배열의 인자값으로
+		 * 들어갈 수 없다. hashSet은 컬렉션 개념이기 때문에 정수 범위 내에서 모든 값을 수용할 수 있다. 그래서 (-)부호를
+		 * 갖는 수도 hashSet에 넣을 수 있다. cf:) 새로운 배열일 경우 ex --> chg_arr[A[i]] = 1; //
+		 * 우선 0으로 다 초기화 하고 1로 바꾼 다음 값이 0인 배열의 키 값만 리턴하면 되는 구조로 진행할 수 있지만, 여기서
+		 * 문제는 A[i]가 음수값을 가질 경우이다. 음수 값을 가지게 된다면 배열 인자는 0부터 시작한다는 조건이 어긋나기 때문에
+		 * hashSet을 사용했다. hashSet에서 (-)부호를 갖는 값들이 들어오더라도, 나중엔 0보다 큰 값을 비교해야하기
+		 * 때문에 1부터 비교하게 된다. 따라서 마이너스 부호로 들어온 값들은 사실상 무의미해진다.
+		 * 
+		 */
+		for (int i = 0; i < A.length; i++) {
+			hashSet.add(A[i]);
+		}
+		for (int i = 1; i < A.length; i++) {
+			if (max < A[i]) {
+				max = A[i];
+			}
+		}
+		// 배열의 크기만큼 돌리는 것이 아니라 A[i]의 최대값보다 1만큼 더 큰 수를 반복해서 돌려야한다.
+		// 1이상부터 검열하기 때문
+		// max가 6이라고 가정한다면 A[i]의 배열에 들어간 값들이 1,2,1,4,6 일 경우,
+		// 6까지 돌려서 5가 없다는 걸 알려줘야 하므로 max까지 돌려야 한다.
+		// max가 1일 경우 대비 2까지 돌리고자 +1 (1이면 2가 출력되게 해야함)
+		
+		for (int i = 1; i <= max + 1; i++) {
+			if (!hashSet.contains(i)) {
+				result = i;
+				return result; // 포함하지 않는 경우를 추출해내야함
+			}
+		}
+		return 1; // 다 포함될 경우 1 추출
+	}
+
+	public static void main(String[] args) {
+		int arr[] = { -3, -2, -1, 0, 1 };
+		System.out.print(solution(arr));
+	}
+}
