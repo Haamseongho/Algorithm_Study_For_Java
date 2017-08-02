@@ -28,8 +28,8 @@ public class MissingInteger {
 		// 1이상부터 검열하기 때문
 		// max가 6이라고 가정한다면 A[i]의 배열에 들어간 값들이 1,2,1,4,6 일 경우,
 		// 6까지 돌려서 5가 없다는 걸 알려줘야 하므로 max까지 돌려야 한다.
-		// max가 1일 경우 대비 2까지 돌리고자 +1 (1이면 2가 출력되게 해야함)
-		
+		// max가 1일 경우 대비 2까지 돌리고자 +1
+		System.out.println(max);
 		for (int i = 1; i <= max + 1; i++) {
 			if (!hashSet.contains(i)) {
 				result = i;
