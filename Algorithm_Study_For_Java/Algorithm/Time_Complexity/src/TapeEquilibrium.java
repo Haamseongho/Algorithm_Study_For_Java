@@ -10,8 +10,14 @@ public class TapeEquilibrium {
 			sum2 += A[i]; // 우선 죄다 더해!
 		}
 		minDiff = 1000000;
-		//System.out.print(minDiff);
-		// minDiff는 최대 합을 준 다음에 이를 두 합간의 차의 절대값과 비교해서 
+		
+		/*
+		 * 문제 소개에서 범위가 너무 넓어서 생기는 문제가 발생하기 때문에 
+		 * minDiff를 임의로 엄청 높게 잡았습니다.
+		 * 이걸 두 합의 차의 절대값과 비교하여 최소 값이 되는 것을 찾아 
+		 * 반환해주면 됩니다.
+		 * 
+		 */
 		
 		for (int i = 0; i < A.length - 1 ; i++) {
 			sum1 += A[i];
@@ -25,8 +31,9 @@ public class TapeEquilibrium {
 			 * diff = |4-9| = 5
 			 * ... 
 			 */
-			diff = (sum1 - sum2);
-			minDiff = (int)Math.min(minDiff,Math.abs(diff));
+			minDiff = Math.min(minDiff,Math.abs(sum1 - sum2));
+			
+			
 			
 		}
 		return (int)minDiff;
