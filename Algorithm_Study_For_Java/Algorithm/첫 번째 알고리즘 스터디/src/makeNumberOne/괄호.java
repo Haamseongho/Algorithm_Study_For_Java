@@ -17,11 +17,11 @@ public class 괄호 {
 			vps[i] = scanner.next();
 		}
 
-		for (int i1 = 0; i1 < vps.length; i1++) {
+		a: for (int i1 = 0; i1 < vps.length; i1++) {
 			for (int j1 = 0; j1 < vps[i1].length(); j1++) {
-				// System.out.println(vps[i1].substring(j1,j1+1));
 				if (vps[i1].substring(0, 1).equals(")")) {
 					ans = "NO";
+					break;
 				} else {
 					// 쭉 넣다가 ')' 만나면 pop
 					if (vps[i1].substring(j1, j1 + 1).equals("(")) {
@@ -38,13 +38,15 @@ public class 괄호 {
 					// 큐에 아무것도 없을 경우 ")" 이거 만나면
 					else {
 						if (vps[i1].substring(j1, j1 + 1).equals(")")) {
-							ans = "NO";
+							ans="NO";
+							continue a;
 						}
 					}
 				}
 			}
 
 			if (vps2.iterator().hasNext() || ans.equals("NO")) {
+				//System.out.println(vps2.poll());
 				System.out.println("NO");
 				vps2.clear();
 			} else {
@@ -52,6 +54,5 @@ public class 괄호 {
 				vps2.clear();
 			}
 		}
-
 	}
 }
