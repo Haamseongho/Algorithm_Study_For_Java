@@ -1,26 +1,20 @@
-package makeNumberOne;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.Scanner;
-import java.util.Vector;
 
-public class 영역구하기 {
+
+public class Main {
+    static final int MAX = 100;
 	static int M;
 	static int N;
 	static int[][] canvas;
-	static int result[];
 	static boolean[][] visit;
-	static int tmp;
+	
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		M = scanner.nextInt();
 		N = scanner.nextInt();
+        int x1,y1,x2,y2;
 		// 2차원 행렬 그리기 [여기서 주의해야할 점은 AxB 행렬이면 A가 행이고 B가 열이란 점
 		canvas = new int[M][N];
 		visit = new boolean[M][N];
@@ -31,10 +25,10 @@ public class 영역구하기 {
 		// 한다.
 
 		for (int i = 0; i < K; i++) {
-			int x1 = scanner.nextInt();
-			int y1 = scanner.nextInt();
-			int x2 = scanner.nextInt();
-			int y2 = scanner.nextInt();
+			x1 = scanner.nextInt();
+			y1 = scanner.nextInt();
+			x2 = scanner.nextInt();
+			y2 = scanner.nextInt();
 			// 그릴 도형의 꼭짓점 정의
 
 			for (int x = x1; x < x2; x++) {
@@ -43,9 +37,9 @@ public class 영역구하기 {
 				}
 			}
 		}
-
+        int tmp = 0; // 값 넣어질 곳 
 		int cnt = 0; // 해당 값의 갯수 구하기 위함
-		result = new int[100];
+		int result[] = new int[MAX];
 
 		for (int i = 0; i < M; i++) {
 			for (int j = 0; j < N; j++) {
@@ -68,7 +62,7 @@ public class 영역구하기 {
 		// 먼저 해야할 것
 		// 재귀함수는 종료조건 설정과 구체화 >> 추상적 개념으로 풀 것
 		// 종료조건 : 그림에서 이미 1이 되어 있는 경우는 지나지 못함 + 이미 지나간 곳은 지나지 못함
-		if (canvas[y][x] == 1 || visit[y][x] == true) {
+		if (canvas[y][x] == 1 || visit[y][x] != false) {
 			return 0;
 		}
 		int value = 1;
