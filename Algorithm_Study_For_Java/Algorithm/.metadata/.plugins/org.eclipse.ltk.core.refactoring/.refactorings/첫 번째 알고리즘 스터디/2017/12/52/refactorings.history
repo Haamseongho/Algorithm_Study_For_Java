@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;makeNumberOne.makeNumberOne&apos; to &apos;숫자1로만들기&apos;&#x0D;&#x0A;- Original project: &apos;첫 번째 알고리즘 스터디&apos;&#x0D;&#x0A;- Original element: &apos;makeNumberOne.makeNumberOne&apos;&#x0D;&#x0A;- Renamed element: &apos;makeNumberOne.숫자1로만들기&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;makeNumberOne&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;makeNumberOne{makeNumberOne.java[makeNumberOne" matchStrategy="1" name="숫자1로만들기" qualified="false" references="true" similarDeclarations="false" stamp="1514476838851" textual="false" version="1.0"/>
+</session>

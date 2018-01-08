@@ -1,0 +1,49 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class 오셀로_재배치_13413 {
+
+	private static String othello1; // Before
+	private static String othello2; // After
+	private static Scanner scan;
+	private static int strLength;
+	private static int w_count; // 'W' - 'B' cnt
+	private static int b_count; // 'B' - 'W' cnt
+
+	public static void main(String[] args) {
+		scan = new Scanner(System.in);
+		int testCase = scan.nextInt();
+
+		// testCase
+
+		// 문자열 길이
+
+		for (int i = 0; i < testCase; i++) {
+			strLength = scan.nextInt();
+			othello1 = scan.next(); // before 문자열 넣어주기
+			othello2 = scan.next(); // after 문자열 넣어주기
+
+			checkOthelloNum(othello1, othello2, strLength);
+
+			int result = Math.abs(w_count - b_count) + ((w_count - b_count < 0) ? w_count : b_count);
+			w_count = 0;
+			b_count = 0;
+			System.out.println(result);
+		}
+	}
+
+	private static void checkOthelloNum(String before, String after, int length) {
+		for (int i = 0; i < length; i++) {
+			// W - B 세트
+			if (before.charAt(i) == 'W' && after.charAt(i) == 'B') {
+				w_count += 1;
+			}
+			// B - W 세트
+			else if (before.charAt(i) == 'B' && after.charAt(i) == 'W') {
+				b_count += 1;
+			}
+		}
+		// 값은 w_count가 3 b_count가 2면 b_count값 + w_count - b_count 값이 된다.
+		
+	}
+}

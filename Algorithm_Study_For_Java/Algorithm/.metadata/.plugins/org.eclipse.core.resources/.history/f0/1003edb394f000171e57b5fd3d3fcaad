@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class 오셀로_재배치_13413 {
+	static int black_count; // 검정색 바둑알 갯수
+	static int white_count; // 하얀색 바둑알 갯수
+	static String coint_arr[]; // W,B 들어가는 배열
+	static final int MAX = 100;
+	
+	public static void main(String[] args) {
+		int count;
+		int coin_cnt; // 알 갯수
+
+		Scanner scanner = new Scanner(System.in);
+		count = scanner.nextInt(); // 바둑알 가지고 플레이할 경기 횟수
+		coint_arr = new String[MAX];
+		for (int i = 0; i < count; i++) {
+			coin_cnt = scanner.nextInt(); // 알 갯수
+			//coint_arr[i] = scanner.next
+		}
+	}
+
+}

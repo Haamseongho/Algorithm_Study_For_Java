@@ -1,0 +1,45 @@
+package makeNumberOne;
+
+import java.util.Scanner;
+
+public class 영역구하기 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int M = sc.nextInt(); // 세로
+		int N = sc.nextInt(); // 가로
+		int K = sc.nextInt(); // 도형의 갯수 (그려 질)
+
+		int canvas[][] = drawCanvas(M, N, K);
+
+		for (int i = 0; i < K; i++) {
+			// 도형 그릴 수 만큼 scanner 돌리기 (직사각형 왼쪽 꼭지점 좌표 & 오른쪽 꼭지점 좌표)
+			drawBoxOnCanvas(canvas, sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.nextInt());
+		}
+		for (int i = 0; i < N+1; i++) {
+			for (int j = 0; j < M+1; j++) {
+				System.out.print(canvas[i][j]);
+			}
+			System.out.println("");
+		}
+	}
+
+	private static int[][] drawCanvas(int M, int N, int K) {
+		int canvas[][] = new int[M + 1][N + 1];
+		for (int i = 0; i < M; i++) {
+			for (int j = 0; j < N; j++) {
+				canvas[i][j] = 0; // 빈 배경 그려주기 (0은 흰색 배경)
+			}
+		}
+		return canvas;
+	}
+
+	private static void drawBoxOnCanvas(int[][] canvas, int x1, int y1, int x2, int y2) {
+		for (int i = x1; i < x2; i++) {
+			for (int j = y1; j < y2; j++) {
+				canvas[j][i] = 1; // (x1,y1) 부터 해서 (x2,y2) 까지 1로 색칠하기 (1은 검정색
+									// 배경)
+			}
+		}
+	}
+}

@@ -1,0 +1,37 @@
+package makeNumberOne;
+
+import java.util.Scanner;
+
+public class makeNumberOne {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		int num = scanner.nextInt();
+		int ans[] = new int[num + 1]; // 배열은 기존 수 보다 인덱스 + 1 만큼 만들어주기
+
+		// ans[1] --> num이 1일 때의 1로가는 횟수 . 즉 0
+		ans[1] = 0;
+		
+		for (int i = 2; i < ans.length; i++) {
+			ans[num] = ans[num - 1] + 1; 
+			// 예: num = 10 >> (9에서 1로가는 횟수) + 1 : 기존 보다
+			// 한 칸 더 이동한 것이므로 +1 해줌
+			if (num % 2 == 0) {
+				// 2로 나누어 떨어질 경우
+				int temp = ans[num / 2] + 1; // num을 2로 나눈 값 >> 차피 1 증가는 같은 맥락
+				if (ans[num] > temp) {
+					ans[num] = temp; // 횟수가 적은 방법으로 가야하기 때문 (최소값 구하는 것임)
+				}
+			}
+
+			if (num % 3 == 0) {
+				int temp = ans[num / 3] + 1;
+				if (ans[num] > temp) {
+					ans[num] = temp;
+				}
+			}
+		}
+		System.out.println(ans[num]);
+	}
+}

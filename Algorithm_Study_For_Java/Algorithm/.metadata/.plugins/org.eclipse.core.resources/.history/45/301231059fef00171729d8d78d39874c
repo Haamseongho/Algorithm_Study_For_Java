@@ -1,0 +1,90 @@
+package makeNumberOne;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class 영역만들기3 {
+
+	static int[][] box;
+	static int x1, x2, y1, y2;
+	static boolean visit[][];
+	static int M;
+	static int N;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scan = new Scanner(System.in);
+		M = scan.nextInt();
+		N = scan.nextInt();
+		int K = scan.nextInt();
+		
+
+		box = new int[M][N];
+		visit = new boolean[M][N];
+
+		for (int i = 0; i < K; i++) {
+			x1 = scan.nextInt();
+			y1 = scan.nextInt();
+			x2 = scan.nextInt();
+			y2 = scan.nextInt();
+
+			for (int x = x1; x < x2; x++) {
+				for (int y = y1; y < y2; y++) {
+					box[y][x] = 1;
+				}
+			}
+		}
+
+		// 색칠 되는 부분 배열로해서 값 1 주기
+		int cnt = 0; // 영역의 갯수
+		int result[] = new int[100];
+
+		for (int i = 0; i < M; i++) {
+			for (int j = 0; j < N; j++) {
+				result[cnt] = dfs(i, j);
+				if (result[cnt] > 0) {
+					cnt++;
+				}
+			}
+		}
+
+		Arrays.sort(result, 0, cnt);
+		System.out.println(cnt);
+		for (int i = 0; i < cnt; i++) {
+			System.out.print(result[i] + " ");
+		}
+	}
+
+	private static int dfs(int j, int i) {
+		// 방문을 했으면 false 방문을 안했으면 true >> 탐색 가능
+		// box2는 계속 체크하기 위함 탐색하기 위함 (배열)
+		// 이미 지나온 것 + box배열에서 1이 정해진 경우
+		// 방문한 곳이면 true
+		if (box[j][i] == 1 && visit[j][i] == true) {
+			return 0;
+		}
+		int value = 1; // 처음 시작은 상자 하나의 너비 값이 1이므로 1로 둔 것입니다.
+		visit[j][i] = true; // dfs 함수가 돌아갔단 것은 방문을 했단 것 (탐색)
+
+		// 이동 조건
+		// 다음 이동할 곳이 사각형 범위 내일 경우 & 다음 이동할 곳의 상자 값이 1이 아닐 경우
+		if (i + 1 < M && box[j][i + 1] == 0) {
+			value += dfs(j, i + 1);
+		}
+		if (i - 1 > 0 && box[j][i - 1] == 0) {
+			value += dfs(j, i - 1);
+		}
+		if (j + 1 < N && box[j + 1][i] == 0) {
+			value += dfs(j + 1, i);
+		}
+		if (j - 1 > 0 && box[j - 1][i] == 0) {
+			value += dfs(j - 1, i);
+		}
+		return value;
+
+		/*
+		 * 사각형 너비 만큼의 범위 또는 이미 지나온 경로일 경우 안됨! dfs함수 다시 호출 !!
+		 */
+	}
+
+}

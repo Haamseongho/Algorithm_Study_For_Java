@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class 오셀로_재배치_13413 {
+	static int before_black_count; // 검정색 바둑알 갯수
+	static int before_white_count; // 하얀색 바둑알 갯수
+	static int after_black_count; // 이 후 검정색 바둑알 갯수
+	static int after_white_count; // 이 후 하얀색 바둑알 갯수
+	static int coint_arr[]; // W,B 들어가는 배열
+	static String before[]; // 초기 배열
+	static String after[]; // 이 후 배열
+	static final int MAX = 100;
+
+	public static void main(String[] args) {
+		int count;
+		int coin_cnt; // 알 갯수
+
+		Scanner scanner = new Scanner(System.in);
+		count = scanner.nextInt(); // 바둑알 가지고 플레이할 경기 횟수
+		/*
+		 * 초기 배열에 WBBWW 넣고 이 후 배열에 WBWBW 넣기 그러고 하나씩 비교할 것임
+		 */
+		coint_arr = new int[MAX];
+		before = new String[MAX];
+		after = new String[MAX];
+
+		for (int i = 0; i < count; i++) {
+			coint_arr[i] = scanner.nextInt(); // 배열에 들어갈 갯수
+			before[i] = scanner.next();
+			after[i] = scanner.next();
+
+			for (int j = 0; j < coint_arr[i]; j++) {
+				if (before[i].charAt(j) == 'W') {
+					before_white_count += 1; // 하얀 돌이 있을 경우 값 하나 상승
+				} else {
+					before_black_count += 1;
+				}
+				if (after[i].charAt(j) == 'W') {
+					after_white_count += 1;
+				} else {
+					after_black_count += 1;
+				}
+			}
+			System.out.print("Black : " + before_black_count + "/" + after_black_count);
+			System.out.print("White : " + before_white_count + "/" + after_white_count);
+			if((before_white_count == after_white_count) && (before_black_count == after_black_count)){
+				System.out.println("동일");
+			}else{
+				System.out.println("동일하지 않음");
+			}
+		}
+	}
+
+}
