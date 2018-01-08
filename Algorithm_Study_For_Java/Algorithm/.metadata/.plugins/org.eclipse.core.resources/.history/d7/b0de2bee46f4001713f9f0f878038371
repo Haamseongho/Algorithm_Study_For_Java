@@ -1,0 +1,56 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class 오셀로_재배치_13413 {
+	static String[] before;
+	static String[] after;
+	static int w_count; // W != B
+	static int b_count; // B != W
+	static int[] count;
+	static int[] result;
+
+	public static void main(String[] args) {
+		int T;
+		int N[];
+		int total_count = 0;
+		Scanner scan = new Scanner(System.in);
+		T = scan.nextInt(); // T : test case
+
+		count = new int[T];
+		before = new String[T];
+		after = new String[T];
+		N = new int[T];
+
+		for (int i = 0; i < T; i++) {
+			N[i] = scan.nextInt(); // N : 문자열 갯수
+			before[i] = scan.next();
+			after[i] = scan.next();
+		}
+
+		for (int i = 0; i < T; i++) {
+			for (int j = 0; j < N[i]; j++) {
+				// W != B
+				if (before[i].charAt(j) == 'W') {
+					if (after[i].charAt(j) == 'B') {
+						w_count += 1;
+						if (b_count != 0) {
+							w_count -= 1; // 하나 줄여야함 앞에서 하나 증가시켰으니
+						}
+					}
+				}
+				// B != W
+				else if (before[i].charAt(j) == 'B') {
+					if (after[i].charAt(j) == 'W') {
+						b_count += 1;
+						if (w_count != 0) {
+							b_count -= 1; // 하나 줄이기 (앞에서 하나 증가 시켰으니)
+						}
+					}
+				}
+			}
+			System.out.println(w_count + b_count); // 최종 결과
+			w_count = 0;
+			b_count = 0;
+		}
+	}
+}

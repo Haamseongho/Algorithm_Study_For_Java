@@ -1,0 +1,42 @@
+package makeNumberOne;
+
+import java.util.Scanner;
+
+public class makeNumberOne {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		int num = scanner.nextInt();
+		System.out.println(dividedByNumbers(num));
+	}
+
+	// ans[n] = n의 값을 1로 만드는 과정에서의 횟수
+	// ans[n] = Math.min(ans[n/3]+1,ans[n/2]+1,ans[n-1]+1)
+	public static int dividedByNumbers(int n) {
+		int ans[] = new int[n+1]; // ans[n]은 n의 값을 나누거나 빼면서 1로 가는데 까지 걸리는 횟수 입니다.
+		
+		if (n == 1) // n이 1이면 나눌 필요가 없죠 그러므로 횟수는 0입니다.
+			return 0; // 초기 부터 1이면 나눌 필요가 없기 때문에 0
+	
+		ans[n] = ans[n-1] + 1;
+		
+		if (n % 2 == 0) {
+			int temp = dividedByNumbers(n / 2) + 1;
+			if (ans[n] > temp) {
+				ans[n] = temp;
+			}
+		}
+		
+		// 3으로 나누어 떨어지는 수면 다시 재귀로 돌려서 ans[n/3]의 횟수에 + 1 한다.
+		if (n % 3 == 0) {
+			int temp = dividedByNumbers(n / 3) + 1;
+			// 예: n이 12일 경우 ans[4]값에 +1 근데 당연히 나눈 것의 값이므로 더 작아야 하기에
+			if (ans[n] > temp) {
+				ans[n] = temp; // 한 차례 나눈 값이 기존의 시작 값보다 횟수는 더 많기 때문임
+			}
+		}
+		
+		return ans[n];
+	}
+}

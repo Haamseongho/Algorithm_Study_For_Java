@@ -1,0 +1,43 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class 수강신청_13414 {
+	static Queue<Integer> queue;
+	static int[] stuId;
+	private static Scanner scan;
+
+	public static void main(String[] args) {
+		scan = new Scanner(System.in);
+		queue = new LinkedList<Integer>();
+
+		int pickNum = scan.nextInt(); // 뽑는 인원 수
+		int maxNum = scan.nextInt(); // 최대 인원 수
+
+		stuId = new int[maxNum];
+		for (int i = 0; i < maxNum; i++) {
+			stuId[i] = scan.nextInt(); // 학번 입력하기
+		}
+		
+		// 선택정렬
+		for (int i = 0; i < maxNum - 1; i++) {
+			for (int j = i + 1; j < maxNum; j++) {
+				if (stuId[i] == stuId[j]) {
+					// 동일한 것이 배열에 있을 경우
+				
+					queue.add(stuId[j]); // 뒤에 꺼를 큐에 넣기
+				}
+			}
+		}
+
+		for (int i = 0; i < pickNum; i++) {
+			System.out.println(queue.poll());
+		}
+
+		while (queue.iterator().hasNext() && pickNum != 0) {
+			pickNum -= 1;// (3-1 / 2-1 / 1-1 == 0이 될 때 아웃)
+			System.out.println(queue.poll());
+		}
+	}
+
+}

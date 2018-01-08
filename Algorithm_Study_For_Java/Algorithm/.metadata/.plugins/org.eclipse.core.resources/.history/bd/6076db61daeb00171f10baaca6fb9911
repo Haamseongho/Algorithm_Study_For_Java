@@ -1,0 +1,36 @@
+package makeNumberOne;
+
+import java.util.Scanner;
+
+public class makeNumberOne {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		int num = scanner.nextInt();
+		int cnt = 0;
+		if (num < 0 || num > 1 * 10 * 10 * 10 * 10 * 10 * 10) {
+			System.out.println("범위 초과");
+		} else {
+			while (num != 1) {
+				num = dividedByNumbers(num);
+				cnt++;
+			}
+		}
+		System.out.println(cnt);
+	}
+
+	// 3으로 나눈 나머지가 0일 때 3의 약수이므로 3의 몫을 리턴한다.
+	// 둘 다 아닐 경우 num-1 반환
+	// 2로 나눈 나머지가 0일 때 2의 약수이므로 2의 몫을 리턴한다.
+	// 둘 다 아닐 경우 num-1 반환
+	public static int dividedByNumbers(int num) {
+		if (num % 3 == 0) {
+			return (num / 3);
+		}
+		if (num % 2 == 0) {
+			return (num / 2);
+		}
+		return (num - 1);
+	}
+}

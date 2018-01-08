@@ -1,0 +1,52 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class 수강신청_13414 {
+	static ArrayList<Integer> list;
+	static int[] stuId;
+	private static Scanner scan;
+
+	public static void main(String[] args) {
+		scan = new Scanner(System.in);
+		list = new ArrayList<Integer>();
+
+		int pickNum = scan.nextInt(); // 뽑는 인원 수
+		int maxNum = scan.nextInt(); // 최대 인원 수
+		int index = 0; // 출력할 때 인덱스 값 주기 위함.
+
+		stuId = new int[maxNum];
+		for (int i = 0; i < maxNum; i++) {
+			stuId[i] = scan.nextInt(); // 학번 입력하기
+			list.add(stuId[i]); // 큐에는 동일하게 다 넣고 나중에 빼는 방향으로 진행
+		}
+		
+		
+		// 선택정렬
+
+		for (int i = 0; i < maxNum - 1; i++) {
+			for (int j = i + 1; j < maxNum; j++) {
+			
+				if (stuId[i] == stuId[j]) {
+					
+					// 비교해서 동일할 경우 앞에 저장된 학번을 큐에서 제거해준다.
+					//list.remove(i); // 해당 인덱스를 키로 갖는 값을 지워준다. (앞에꺼 지워주기)
+					System.out.println(i);
+					System.out.println(list.get(i));
+					//list.remove(i);
+					break;
+				}
+			}
+		}
+		
+		System.out.println("------------------");
+
+
+		while ((!list.isEmpty()) && (pickNum != 0)) {
+			pickNum -= 1;
+			System.out.println(list.get(index));
+			index += 1;
+		}
+	}
+}

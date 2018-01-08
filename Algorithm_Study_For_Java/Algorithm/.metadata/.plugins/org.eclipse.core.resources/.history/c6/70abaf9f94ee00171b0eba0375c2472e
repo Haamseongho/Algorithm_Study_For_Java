@@ -1,0 +1,57 @@
+package makeNumberOne;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Scanner;
+
+public class 괄호 {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int num = scanner.nextInt();
+		String ans = "";
+		String[] vps = new String[num];
+		// 소괄호 입력하기
+		Deque<String> vps2 = new ArrayDeque<String>();
+		for (int i = 0; i < vps.length; i++) {
+			vps[i] = scanner.next();
+		}
+
+		for (int i1 = 0; i1 < vps.length; i1++) {
+			for (int j1 = 0; j1 < vps[i1].length() - 1; j1++) {
+				System.out.println(vps[i1].substring(j1,j1+1));
+				/*if (vps[i1].substring(j1, j1 + 1) == ")") {
+					// 실패 --> 처음에는 왼쪽 소괄호여야함 무조건
+				} else {
+					// 쭉 넣다가 ')' 만나면 pop
+					if (vps[i1].substring(j1, j1 + 1) == "(") {
+						vps2.add(vps[i1].substring(j1, j1 + 1)); // '(' 일 때 계속
+																	// 넣어주기
+					}
+					if (vps[i1].substring(j1, j1 + 1) == ")") {
+						vps2.pop();
+						// ')' 이거 만나자마자 pop! 그러면 '(' 이거 하나 사라질 것임
+						// 이렇게 반복하다가 Deque에 남아 있지 않다면 Yes 남아 있으면 No
+					}
+					if (vps[i1].substring(vps[i1].length() - 1, vps[i1].length()) == ")") {
+						vps2.add(")");
+					}
+					if (vps[i1].substring(vps[i1].length() - 1, vps[i1].length()) == "(") {
+						ans = "NO";
+					}
+				}*/
+			}
+			
+		    //System.out.println(vps2.pop());
+			/*if (vps2.iterator().hasNext()) {
+				System.out.println("NO");
+				vps2.clear();
+			} else {
+				System.out.println("YES");
+				vps2.clear();
+			}*/
+		
+		}
+
+	}
+}

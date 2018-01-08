@@ -1,0 +1,48 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class 오셀로_재배치_13413 {
+	static String before;
+	static String after;
+	static int w_count; // W != B
+	static int b_count; // B != W
+
+	public static void main(String[] args) {
+		int T;
+		int N;
+		int total_count = 0;
+		int count = 0;
+		Scanner scan = new Scanner(System.in);
+		T = scan.nextInt(); // T : test case
+
+		for (int i = 0; i < T; i++) {
+			N = scan.nextInt(); // N : 문자열 갯수
+			before = scan.next();
+			after = scan.next();
+			
+
+			if (before.charAt(i) == 'B') {
+				if (after.charAt(i) == 'W') {
+					b_count += 1;
+				}
+			}
+			if (before.charAt(i) == 'W') {
+				if (after.charAt(i) == 'B') {
+					w_count += 1;
+				}
+			}
+		}
+		if (b_count == 0)
+			count = w_count + 1; 
+
+		if (w_count == 0)
+			count = b_count + 1;
+
+		// 앞서 if문에 걸릴 경우 예를 들면 w_count가 0일 경우 b_count가 total_count가 되는데
+		// 아래 합은 w_count는 0일테고 count는 1이기에 -1과 상쇄되어 total_count는 b_count가 됩니다.
+		// if문에 걸리지 않을 경우는 count는 0으로 설정되어 있기에 무관합니다.
+		total_count = b_count + w_count + count - 1;
+		
+		System.out.println(total_count);
+	}
+}

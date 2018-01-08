@@ -1,0 +1,57 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class 오셀로_재배치_13413 {
+	static String before;
+	static String after;
+    static Stack<Character> stack;
+    
+	public static void main(String[] args) {
+		int T;
+		int N;
+		int count = 0;
+		Scanner scan = new Scanner(System.in);
+		T = scan.nextInt(); // T : test case
+		
+		stack = new Stack<>();
+		
+		for (int i = 0; i < T; i++) {
+			N = scan.nextInt(); // N : 문자열 갯수
+			before = scan.next();
+			after = scan.next();
+			
+			if(before.charAt(i) == 'W'){
+				if(after.charAt(i) == 'W'){
+					// 나이스
+				}else{
+					stack.push((before.charAt(i)));
+				}
+			}
+			
+			if(before.charAt(i) == 'B'){
+				if(after.charAt(i) == 'B'){
+					// 나이스
+				}else{
+					stack.push((before.charAt(i)));
+				}
+			}
+			if(stack.pop() == 'W'){
+				if(stack.pop() == 'B'){
+					count += 1;
+				}else{
+					count += 2;
+				}
+			}
+			else if(stack.pop() == 'B'){
+				if(stack.pop() == 'W'){
+					count += 1;
+				}else{
+					count += 2;
+				}
+			}
+			
+			System.out.println(count);
+		}
+	
+	}
+}

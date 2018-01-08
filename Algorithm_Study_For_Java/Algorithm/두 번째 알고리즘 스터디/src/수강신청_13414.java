@@ -1,0 +1,38 @@
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Scanner;
+
+public class 수강신청_13414 {
+	static LinkedHashSet<String> stuList;
+	private static Scanner scan;
+	static int pickNum;
+	static int maxNum;
+
+	public static void main(String[] args) {
+		scan = new Scanner(System.in);
+		pickNum = scan.nextInt(); // 수강 인원 뽑는 수
+		maxNum = scan.nextInt(); // 최대 수강 인원
+
+		stuList = new LinkedHashSet<String>();
+		String stuId;
+		// LinkedHashSet<Element>
+		// Set의 특성 상 중복된 값은 추가하지 않습니다. 그렇지만 Linked로 연결 구조를 가지고 있기 때문에 입력할 떄의 순서는
+		// 기억합니다.(노드끼리의 연결)
+		for (int i = 0; i < maxNum; i++) {
+			stuId = scan.next(); // 학번 입력
+			// Set에 저장이 안되어 있는 경우 추가해주기
+			if (stuList.contains(stuId)) {
+				stuList.remove(stuId);
+			}
+			stuList.add(stuId);
+		}
+		// stuList는 중복된 값이 들어가지 않았을테니까 그대로 출력해주면 됩니다.
+		Iterator<String> it = stuList.iterator();
+		// Iterator 선언 해서 넣어주게 되면 stuList라는 LinkedHashSet의 Iterator가 계속 재사용되기
+		// 때문에 아래 it.next()를 하게 되면 해당 Iterator의 다음꺼를 가지고 오는 것 입니다.
+		while (it.hasNext() && pickNum != 0) {
+			System.out.println(it.next());
+			pickNum--;
+		}
+	}
+}

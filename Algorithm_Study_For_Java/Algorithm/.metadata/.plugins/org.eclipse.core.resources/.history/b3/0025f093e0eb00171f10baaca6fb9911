@@ -1,0 +1,35 @@
+package makeNumberOne;
+
+import java.util.Scanner;
+
+public class makeNumberOne {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		int num = scanner.nextInt();
+		System.out.println(dividedByNumbers(num));
+	}
+
+	// ans[n] = Math.min(ans[n/3]+1,ans[n/2]+1,ans[n-1]+1)
+	public static int dividedByNumbers(int n) {
+		int ans[] = new int[10]; // 예 : n이 10일 경우 ans[10]의 횟수가 중요한 것 : +1 해주는 것은
+								// 마지막 1이 남을 때에는 횟수에 포함시키지 않기 때문
+		if (ans[n] > 0)
+			return ans[n];
+		if (n % 3 == 0) {
+			int temp = dividedByNumbers(n / 3) + 1;
+			// 예: n이 12일 경우 ans[4]값에 +1 근데 당연히 나눈 것의 값이므로 더 작아야 하기에
+			if (ans[n] > temp) {
+				ans[n] = temp;
+			}
+		}
+		if (n % 2 == 0) {
+			int temp = dividedByNumbers(n / 2) + 1;
+			if(ans[n] > temp){
+				ans[n] = temp;
+			}
+		}
+		return ans[n];
+	}
+}

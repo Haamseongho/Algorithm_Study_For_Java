@@ -1,0 +1,33 @@
+import java.util.LinkedHashSet;
+import java.util.Scanner;
+
+public class 수강신청_13414 {
+	static LinkedHashSet<Integer> stuList;
+	private static Scanner scan;
+
+	public static void main(String[] args) {
+		scan = new Scanner(System.in);
+
+		int pickNum = scan.nextInt(); // 수강 인원 뽑는 수
+		int maxNum = scan.nextInt(); // 최대 수강 인원
+
+		stuList = new LinkedHashSet<Integer>();
+
+		// LinkedHashSet<Element>
+		// Set의 특성 상 중복된 값은 추가하지 않습니다. 그렇지만 Linked로 연결 구조를 가지고 있기 때문에 입력할 떄의 순서는
+		// 기억합니다.(노드끼리의 연결)
+		for (int i = 0; i < maxNum; i++) {
+			int stuId = scan.nextInt(); // 학번 입력
+			// Set에 저장이 안되어 있는 경우 추가해주기
+			if (stuList.contains(stuId)) {
+				stuList.remove(stuId);
+			}
+			stuList.add(stuId);
+		}
+		// stuList는 중복된 값이 들어가지 않았을테니까 그대로 출력해주면 됩니다.
+		while (stuList.iterator().hasNext() && pickNum != 0) {
+			System.out.println(stuList.iterator().next());
+			pickNum--;
+		}
+	}
+}
