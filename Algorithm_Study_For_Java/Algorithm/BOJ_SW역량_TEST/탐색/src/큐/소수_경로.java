@@ -31,10 +31,7 @@ public class 소수_경로 {
 				}
 			}
 		}
-	/*	
-		for(int i=0;i<=10000;i++)
-			isPrime[i] = !isPrime[i];
-*/
+
 		while (T-- > 0) {
 			int n = scanner.nextInt();
 			int m = scanner.nextInt();
